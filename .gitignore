@@ -29,7 +29,10 @@
 .vs/
 
 # Plastic SCM cache directory 
-.[Pp]lastic/
+*/.[Pp]lastic/
+*.selector
+*.wktree
+*.workspace
 
 # Vuplex Package
 /[Aa]ssets/Vuplex
