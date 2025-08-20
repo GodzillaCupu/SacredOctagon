@@ -31,6 +31,9 @@
 # Plastic SCM cache directory 
 .[Pp]lastic/
 
+# Vuplex Package
+/[Aa]ssets/Vuplex
+
 # Gradle cache directory
 .gradle/
 
