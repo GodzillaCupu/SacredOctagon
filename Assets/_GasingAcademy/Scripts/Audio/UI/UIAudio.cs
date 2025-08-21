@@ -30,7 +30,7 @@ namespace DGE.Audio
         void OnDisable()
         {
             sliderBGM.onValueChanged.RemoveAllListeners();
-            sliderSFX.onValueChanged.RemoveAllListeners();
+            sliderBGM.onValueChanged.RemoveAllListeners();
         }
 
         void OnValueChangeBGM() => OnChangeBGM?.Invoke(sliderBGM.value);

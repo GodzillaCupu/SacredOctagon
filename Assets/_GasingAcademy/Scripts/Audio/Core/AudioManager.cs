@@ -19,7 +19,7 @@ namespace DGE.Audio
             sourceHandler.Initialization();
         }
 
-        public void Play(AudioType_Enum _audioType,string _id)
+        public void Play(AudioType_Enum _audioType, string _id)
         {
             switch (_audioType)
             {
@@ -83,5 +83,20 @@ namespace DGE.Audio
             _targetSource.PlayOneShot(_targetClip);
         }
 
+        public void SetVolumeEffect(float _targetVolume)
+        {
+            // Convert linear slider value to logarithmic decibel value
+            // Ensure sliderValue is not zero to prevent issues with Log10
+            float mixerVolume = Mathf.Log10(Mathf.Max(0.0001f, _targetVolume)) * 20;
+            sourceHandler.mixerGroup.SFX.audioMixer.SetFloat("Audio-Volume-SFX", mixerVolume);
+        }
+
+        public void SetVolumeBGM(float _targetVolume)
+        {
+            // Convert linear slider value to logarithmic decibel value
+            // Ensure sliderValue is not zero to prevent issues with Log10
+            float mixerVolume = Mathf.Log10(Mathf.Max(0.0001f, _targetVolume)) * 20;
+            sourceHandler.mixerGroup.BGM.audioMixer.SetFloat("Audio-Volume-BGM", mixerVolume);
+        }
     }
 }
