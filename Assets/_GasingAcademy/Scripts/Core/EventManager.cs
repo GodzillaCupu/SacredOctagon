@@ -37,5 +37,11 @@ namespace DGE.Core
         public static event Action PvpFinishEvent;
         public static void PvpFinish() => PvpFinishEvent?.Invoke();
         #endregion
+
+
+        #region StartGame
+        public static event Action StartGameEvent;
+        public static void StartGame() => StartGameEvent?.Invoke();
+        #endregion
     }
 }

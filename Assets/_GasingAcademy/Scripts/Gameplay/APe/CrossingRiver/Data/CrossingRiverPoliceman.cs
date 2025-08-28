@@ -6,10 +6,10 @@ namespace DGE.Gameplay.APe.Utils
         {
             base.Start();
 
-            CrossingRiverManager.Register(this);
+            _crossingRiverManager.Register(this);
             
-            startingIslandPosition = CrossingRiverManager.startingIsland.GetPolicePosition();
-            targetIslandPosition = CrossingRiverManager.targetIsland.GetPolicePosition();
+            startingIslandPosition = _crossingRiverManager.startingIsland.GetPolicePosition();
+            targetIslandPosition = _crossingRiverManager.targetIsland.GetPolicePosition();
             
             transform.position = startingIslandPosition.position;
         }

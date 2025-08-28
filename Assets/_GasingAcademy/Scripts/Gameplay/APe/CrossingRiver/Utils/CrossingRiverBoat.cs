@@ -31,6 +31,7 @@ namespace DGE.Gameplay.APe.Utils
         private void Start()
         {
             defaultYPos = transform.localPosition.y;
+            _crossingRiverManager = CrossingRiverManager.Instance;
             UpdateManager.Add(this);
         }
         private void OnDestroy()

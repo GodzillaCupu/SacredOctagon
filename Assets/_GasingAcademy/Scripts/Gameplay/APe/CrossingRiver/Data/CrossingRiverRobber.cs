@@ -8,26 +8,26 @@ namespace DGE.Gameplay.APe.Utils
         {
             base.Start();
 
-            CrossingRiverManager.Register(this);
+            _crossingRiverManager.Register(this);
 
-            startingIslandPosition = CrossingRiverManager.startingIsland.GetRobberPosition();
-            targetIslandPosition = CrossingRiverManager.targetIsland.GetRobberPosition();
+            startingIslandPosition = _crossingRiverManager.startingIsland.GetRobberPosition();
+            targetIslandPosition = _crossingRiverManager.targetIsland.GetRobberPosition();
 
             transform.position = startingIslandPosition.position;
         }
         protected override void CheckLoseCondition()
         {
-            var police = CrossingRiverManager.Resolve<CrossingRiverPoliceman>();
+            var police = _crossingRiverManager.Resolve<CrossingRiverPoliceman>();
             if (police.isAcrossTheRiver != isAcrossTheRiver)
             {
-                foreach (var objectKvp in CrossingRiverManager.GetAllObject())
+                foreach (var objectKvp in _crossingRiverManager.GetAllObject())
                 {
                     if (objectKvp.Value == police) continue;
                     if (objectKvp.Value == this) continue;
                     if (objectKvp.Value.isAcrossTheRiver == isAcrossTheRiver)
                     {
                         // Lose 
-                        CrossingRiverManager.onGameLost?.Invoke();
+                        _crossingRiverManager.onGameLost?.Invoke();
                     }
                 }
             }

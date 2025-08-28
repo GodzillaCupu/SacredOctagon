@@ -7,25 +7,25 @@ namespace DGE.Gameplay.APe.Utils
         {
             base.Start();
 
-            CrossingRiverManager.Register(this);
+            _crossingRiverManager.Register(this);
 
-            startingIslandPosition = CrossingRiverManager.startingIsland.GetRedMomPosition();
-            targetIslandPosition = CrossingRiverManager.targetIsland.GetRedMomPosition();
+            startingIslandPosition = _crossingRiverManager.startingIsland.GetRedMomPosition();
+            targetIslandPosition = _crossingRiverManager.targetIsland.GetRedMomPosition();
 
             transform.position = startingIslandPosition.position;
         }
 
         protected override void CheckLoseCondition()
         {
-            var yellowMom = CrossingRiverManager.Resolve<CrossingRiverYellowMom>();
-            var yellowKidOne = CrossingRiverManager.Resolve<CrossingRiverYellowKidOne>();
-            var yellowKidTwo = CrossingRiverManager.Resolve<CrossingRiverYellowKidTwo>();
+            var yellowMom = _crossingRiverManager.Resolve<CrossingRiverYellowMom>();
+            var yellowKidOne = _crossingRiverManager.Resolve<CrossingRiverYellowKidOne>();
+            var yellowKidTwo = _crossingRiverManager.Resolve<CrossingRiverYellowKidTwo>();
 
             if (yellowMom.isAcrossTheRiver != isAcrossTheRiver)
             {
                 if (yellowKidOne.isAcrossTheRiver == isAcrossTheRiver || yellowKidTwo.isAcrossTheRiver == isAcrossTheRiver)
                 {
-                    CrossingRiverManager.onGameLost?.Invoke();
+                    _crossingRiverManager.onGameLost?.Invoke();
                 }
             }
         }

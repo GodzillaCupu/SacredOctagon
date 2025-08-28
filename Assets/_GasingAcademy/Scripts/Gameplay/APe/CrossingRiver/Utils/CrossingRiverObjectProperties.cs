@@ -28,6 +28,7 @@ namespace DGE.Gameplay.APe.Utils
 
         private void Start()
         {
+            _crossingRiverManager = CrossingRiverManager.Instance;
             _crossingRiverObjectType = GetComponent<CrossingRiverObjectType>();
         }
 

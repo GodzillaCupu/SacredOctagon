@@ -5,7 +5,7 @@ namespace DGE.Gameplay.APe.Utils
     
     public class CrossingRiverObjectType : MonoBehaviour
     {
-        protected CrossingRiverManager CrossingRiverManager;
+        protected CrossingRiverManager _crossingRiverManager;
 
         [HideInInspector] public Transform startingIslandPosition;
         [HideInInspector] public Transform targetIslandPosition;
@@ -14,7 +14,8 @@ namespace DGE.Gameplay.APe.Utils
 
         protected virtual void Start()
         {
-            CrossingRiverManager.onCheckLoseCondition.AddListener(CheckLoseCondition);
+            _crossingRiverManager = CrossingRiverManager.Instance;
+            _crossingRiverManager.onCheckLoseCondition.AddListener(CheckLoseCondition);
         }
 
         protected virtual void CheckLoseCondition()

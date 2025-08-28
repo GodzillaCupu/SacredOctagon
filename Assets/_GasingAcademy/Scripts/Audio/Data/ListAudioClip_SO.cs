@@ -43,6 +43,11 @@ namespace DGE.Audio.Component
             ClipData _tempData = new ClipData();
             _tempData = SFX_ClipData.Find(_targetData => _targetData.id == _clipName);
 
+            if (_tempData == null)
+            {
+                Debug.Log($"DATA MISSING {_clipName}");
+                return null;
+            }
             GetCurrentSFXData = _tempData;
             return GetAudioClipData(_clipName, _tempData);
         }

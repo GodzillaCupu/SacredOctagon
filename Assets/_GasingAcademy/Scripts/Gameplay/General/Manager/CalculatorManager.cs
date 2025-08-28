@@ -174,6 +174,12 @@ namespace DGE.Gameplay.General.Manager
             if (IsNull()) return;
             OnResetField();
         }
+
+        public void ClearInputFields()
+        {
+
+        }
+        
         private void OnPlusMinusButton()
         {
             if (IsNull()) return;
