@@ -60,8 +60,8 @@ namespace DGE.Gameplay.APe.Utils
                         AudioManager.Instance.Stop(AudioType_Enum.SFX);
                     }
                 );
-                _crossingRiverManager.SetIsMainIsland(true);
-                onCrossingToTargetIsland?.Invoke(false);
+                _crossingRiverManager.SetIsMainIsland(false);
+                onCrossingToTargetIsland?.Invoke(true);
             }
             else
             {

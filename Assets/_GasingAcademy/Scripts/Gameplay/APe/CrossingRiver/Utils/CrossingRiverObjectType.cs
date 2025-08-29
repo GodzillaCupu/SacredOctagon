@@ -7,10 +7,10 @@ namespace DGE.Gameplay.APe.Utils
     {
         protected CrossingRiverManager _crossingRiverManager;
 
-        [HideInInspector] public Transform startingIslandPosition;
-        [HideInInspector] public Transform targetIslandPosition;
+        public Transform startingIslandPosition;
+        public Transform targetIslandPosition;
 
-        [HideInInspector] public bool isAcrossTheRiver;
+        public bool isAcrossTheRiver;
 
         protected virtual void Start()
         {

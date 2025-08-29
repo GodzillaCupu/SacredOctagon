@@ -56,7 +56,7 @@ namespace DGE.Gameplay.APe.Utils
                 transform.SetParent(_crossingRiverManager.boat.transform);
 
                 _targetVector = _boatInUse.boatSeatTransform.position;
-                _targetVector.y = _boatInUse.boatSeatTransform.localPosition.y;
+                _targetVector.y = _boatInUse.boatSeatTransform.position.y;
                 _boatInUse.isInUse = true;
                 _boatInUse.isSomethingTryToJumping = true;
                 _boatInUse.isAdultPassenger = isAdult;
@@ -118,12 +118,12 @@ namespace DGE.Gameplay.APe.Utils
 
             void MoveY()
             {
-                LeanTween.moveY(gameObject, maxHeight, totalAnimationTime / 2)
+                LeanTween.moveY(gameObject, _targetVector.y , totalAnimationTime / 2)
                     .setEase(LeanTweenType.easeOutSine)
                     .setOnComplete(
                         () =>
                         {
-                            LeanTween.moveY(gameObject, maxHeight, totalAnimationTime / 2)
+                            LeanTween.moveY(gameObject, _targetVector.y, totalAnimationTime / 2)
                                 .setEase(LeanTweenType.easeInSine);
                         }
                     );

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using DGE.Audio.Component;
 using DGE.Utils.core;
+using System.Collections.Generic;
 
 namespace DGE.Audio
 {
@@ -9,6 +10,8 @@ namespace DGE.Audio
     {
         [SerializeField] public AudioSourceHandler sourceHandler = new AudioSourceHandler();
         [SerializeField] ListAudioClip_SO audioClipsData;
+
+        public List<string> missingAudioList_id;
 
         [SerializeField] ClipData currentBGMClip;
         [SerializeField] ClipData currentSFXClip;
@@ -42,17 +45,41 @@ namespace DGE.Audio
             AudioSource _targetSource = sourceHandler.source.BGM;
             currentBGMClip = audioClipsData.GetCurrentBGMData;
 
+
+            AudioClip _targetClip = audioClipsData.GetAudioClip(AudioType_Enum.BGM, currentBGMClip.id);
+            if (_targetClip == null)
+            {
+                missingAudioList_id.Add(
+                    missingAudioList_id.Exists(
+                        _target => _target == currentBGMClip.id
+                    )
+                    ? null : currentBGMClip.id
+                );
+                return;
+            }
+
             _targetSource.loop = true;
             _targetSource.playOnAwake = true;
-            _targetSource.clip = currentBGMClip.clip;
+            _targetSource.clip = _targetClip;
             _targetSource.Play();
         }
 
         public void PlaySFX(string _id, bool _isLooping = true)
         {
             AudioSource _targetSource = sourceHandler.source.SFX;
-            AudioClip _targetClip = audioClipsData.GetAudioClip(AudioType_Enum.SFX, _id);
             currentSFXClip = audioClipsData.GetCurrentSFXData;
+
+            AudioClip _targetClip = audioClipsData.GetAudioClip(AudioType_Enum.SFX, _id);
+            if (_targetClip == null)
+            {
+                missingAudioList_id.Add(
+                    missingAudioList_id.Exists(
+                        _target => _target == _id
+                    )
+                    ? null : _id
+                );
+                return;
+            }
 
             _targetSource.loop = _isLooping;
             _targetSource.playOnAwake = false;
@@ -63,8 +90,18 @@ namespace DGE.Audio
         public void PlayVO(string _id)
         {
             AudioSource _targetSource = sourceHandler.source.VO;
+
             AudioClip _targetClip = audioClipsData.GetAudioClip(AudioType_Enum.VO, _id);
-            currentVOClip = audioClipsData.GetCurrentVOData;
+            if (_targetClip == null)
+            {
+                missingAudioList_id.Add(
+                    missingAudioList_id.Exists(
+                        _target => _target == _id
+                    )
+                    ? null : _id
+                );
+                return;
+            }
 
             _targetSource.loop = false;
             _targetSource.playOnAwake = false;

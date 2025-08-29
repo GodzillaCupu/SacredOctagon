@@ -26,7 +26,7 @@ namespace DGE.Audio.Component
                 case AudioType_Enum.VO:
                     return GetAudioClipVO(_characterName, _adegan, _clipName);
                 default:
-                    return GetAudioClipData(_clipName, BGM_ClipData);
+                    return null;
             }
         }
 
