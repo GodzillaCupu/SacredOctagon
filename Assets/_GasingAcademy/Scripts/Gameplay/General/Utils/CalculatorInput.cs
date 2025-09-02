@@ -1,12 +1,12 @@
+using Doozy.Runtime.UIManager.Components;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DGE.Gameplay.General.Utils
 {
     public class CalculatorInput : MonoBehaviour
     {
-        [SerializeField] Button inputButton = null;
+        [SerializeField] UIButton inputButton = null;
         [SerializeField] TMP_Text buttonNameText = null;
         [SerializeField] TMP_Text inputText = null;
 
@@ -18,7 +18,7 @@ namespace DGE.Gameplay.General.Utils
         {
             inputButton.interactable = interactable;
         }
-        public Button GetInputButton()
+        public UIButton GetInputButton()
         {
             return inputButton;
         }
